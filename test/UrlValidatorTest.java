@@ -18,9 +18,10 @@ public class UrlValidatorTest extends TestCase {
    String[] validAuthority = {"www.google.com","0.0.0.0","OSU.edu"};
    String[] invalidAuthority = {".~google.com","1.2.3",""};
    String[] validPort = {"www.google.com:80","www.google.com:21","www.google.com:443"};
-   String[] invalidPort = {"www.google.com:65537","www.google.com:-15",null};
-   String[] validPath = { "/path", "/:", "/path/", "/path/path","@"};
-   String[] invalidPath = {"//path", "/path//path","./.","'\\'","[]"};
+   String[] invalidPort = {"www.google.com:65537","www.google.com:-15","-010"};
+   String[] validPath = { "/path", "/123", "/path/", "/path/path","/@"};
+   String[] invalidPath = {"//path", "/path//path","/*","{a,b,c}","[]"};
+   String[] validQuery = { "?", "?key=value", "#"};
    
    int numberOfRuns = 25;
    
@@ -105,7 +106,7 @@ public class UrlValidatorTest extends TestCase {
        for(int i = 0; i < numberOfRuns; i++ ){
            
            String currentInvAuthority = selectRandom(rand,invalidAuthority);
-           String currentInvScheme = selectRandom(rand,invalidSchemes);
+           String currentInvScheme = selectRandom(rand, validSchemes);
            String combinedInvURL = currentInvScheme + currentInvAuthority;
            boolean result = false;
            
@@ -113,8 +114,8 @@ public class UrlValidatorTest extends TestCase {
            
            try{result= urlVal.isValid(combinedInvURL);}
             catch(Error e) 
-            {System.out.println(combinedInvURL +" caused " +e); continue;} //print URL causing errors, the error message then skip it
-             System.out.println(combinedInvURL +" returned "+ result); //if a result can be calculated, returned it and URL
+            {System.out.println(combinedInvURL +" caused " +e); continue;} 
+             System.out.println(combinedInvURL +" returned "+ result); 
            }
            
    }
@@ -137,13 +138,13 @@ public class UrlValidatorTest extends TestCase {
            
            try{result= urlVal.isValid(combinedURL);}
             catch(Error e) 
-            {System.out.println(combinedURL +" caused " +e); continue;} //print URL causing errors, the error message then skip it
-             System.out.println(combinedURL +" returned "+ result); //if a result can be calculated, returned it and URL          
+            {System.out.println(combinedURL +" caused " +e); continue;} 
+             System.out.println(combinedURL +" returned "+ result);        
         }
        
        for(int i = 0; i < numberOfRuns; i++ ){
            
-           String currentInvScheme = selectRandom(rand,invalidSchemes);
+           String currentInvScheme = selectRandom(rand,validSchemes);
            String currentInvPort = selectRandom(rand,invalidPort);
            String combinedInvURL = currentInvScheme + currentInvPort;
            
@@ -153,12 +154,13 @@ public class UrlValidatorTest extends TestCase {
            
            try{result= urlVal.isValid(combinedInvURL);}
             catch(Error e) 
-            {System.out.println(combinedInvURL +" caused " +e); continue;} //print URL causing errors, the error message then skip it
-             System.out.println(combinedInvURL +" returned "+ result); //if a result can be calculated, returned it and URL
+            {System.out.println(combinedInvURL +" caused " +e); continue;} 
+             System.out.println(combinedInvURL +" returned "+ result); 
         }
    }
    
-   public void testYourFifthPartition(){
+   /*Test Valid and Invalid Path*/
+   public void testYourForthPartition(){
        
     UrlValidator urlVal = new UrlValidator(UrlValidator.ALLOW_ALL_SCHEMES);
     
@@ -166,26 +168,28 @@ public class UrlValidatorTest extends TestCase {
        
        for(int i = 0; i < numberOfRuns; i++ ){
            
-           String currentScheme = selectRandom(rand,validSchemes);
-           String currentPort = selectRandom(rand,validPort);
+           String currentScheme = "http://";
+           //String currentScheme = selectRandom(rand,validSchemes);
            String currentPath = selectRandom(rand,validPath);
-           String combinedURL = currentScheme + currentPort + currentPath;
+           String currentAuthority = selectRandom(rand,validAuthority);
+           String combinedURL = currentScheme + currentAuthority + currentPath;
            
            System.out.println("\nTesting Valid Path: " + combinedURL);
            boolean result = false;
            
            try{result= urlVal.isValid(combinedURL);}
             catch(Error e) 
-            {System.out.println(combinedURL +" caused " +e); continue;} //print URL causing errors, the error message then skip it
-             System.out.println(combinedURL +" returned "+ result); //if a result can be calculated, returned it and URL          
+            {System.out.println(combinedURL +" caused " +e); continue;} 
+             System.out.println(combinedURL +" returned "+ result);          
         }
        
        for(int i = 0; i < numberOfRuns; i++ ){
            
-           String currentInvScheme = selectRandom(rand,invalidSchemes);
-           String currentInvPort = selectRandom(rand,invalidPort);
+           String currentInvScheme = "http://";
+           //String currentInvScheme = selectRandom(rand,validSchemes);
            String currentInvPath = selectRandom(rand,invalidPath);
-           String combinedInvURL = currentInvScheme + currentInvPort + currentInvPath;
+           String currentInvAuthority = selectRandom(rand,invalidAuthority);
+           String combinedInvURL = currentInvScheme + currentInvAuthority + currentInvPath;
            
            System.out.println("\nTesting invalid Path: " + combinedInvURL);
            
@@ -193,18 +197,42 @@ public class UrlValidatorTest extends TestCase {
            
            try{result= urlVal.isValid(combinedInvURL);}
             catch(Error e) 
-            {System.out.println(combinedInvURL +" caused " +e); continue;} //print URL causing errors, the error message then skip it
-             System.out.println(combinedInvURL +" returned "+ result); //if a result can be calculated, returned it and URL
+            {System.out.println(combinedInvURL +" caused " +e); continue;} 
+             System.out.println(combinedInvURL +" returned "+ result); 
         }
+   }
+   /*Testing Random Combination with query*/
+   public void testYourFifthPartition()
+   {
+       UrlValidator urlVal = new UrlValidator(UrlValidator.ALLOW_ALL_SCHEMES);
+       Random rand = new Random();
+       
+       for(int i = 0; i < numberOfRuns; i++ ){
+           
+           String currentScheme = "http://";
+           String currentPath = selectRandom(rand,validPath);
+           String currentAuthority = selectRandom(rand,validAuthority);
+           String currentQuery = selectRandom(rand,validQuery);
+           String combinedURL = currentScheme + currentAuthority + currentPath + currentQuery;
+           
+           System.out.println("\nTesting Valid Query: " + combinedURL);
+           boolean result = false;
+           
+           try{result= urlVal.isValid(combinedURL);}
+            catch(Error e) 
+            {System.out.println(combinedURL +" caused " +e); continue;} 
+             System.out.println(combinedURL +" returned "+ result);          
+        }
+       
    }
    //You need to create more test cases for your Partitions if you need to 
    
    public void testIsValid()
    {
-     
+      
 
    }
    
+}
 
-
- }
+ 
