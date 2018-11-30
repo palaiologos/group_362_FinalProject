@@ -39,7 +39,530 @@ public class UrlValidatorTest extends TestCase {
    
    public void testManualTest()
    {
-//You can use this function to implement your manual testing	   
+//You can use this function to implement your manual testing	
+	   UrlValidator url = new UrlValidator();
+	   UrlValidator url_scheme = new UrlValidator(null,null, UrlValidator.ALLOW_ALL_SCHEMES);
+	
+//*******************************************************************************
+//   Without an ALLOW_ALL_SCHEME	 
+//*******************************************************************************
+	   System.out.println("Without an ALLOW_ALL_SCHEME");
+	   String message = "http://www.google.com";
+	   if (url.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   System.out.println("\n");
+	   System.out.println("Without an ALLOW_ALL_SCHEME");
+	   message = "http://";
+	   if (url.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("Without an ALLOW_ALL_SCHEME");
+	   message = "https://";
+	   if (url.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("Without an ALLOW_ALL_SCHEME");
+	   message = "ftp://";
+	   if (url.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("Without an ALLOW_ALL_SCHEME");
+	   message = "google.com";
+	   if (url.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("Without an ALLOW_ALL_SCHEME");
+	   message = "youtube.com";
+	   if (url.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("Without an ALLOW_ALL_SCHEME");
+	   message = "0.0.0.0";
+	   if (url.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("Without an ALLOW_ALL_SCHEME");
+	   message = "255.255.255.255";
+	   if (url.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+
+//*******************************************************************************
+//   With an ALLOW_ALL_SCHEME	 
+//*******************************************************************************	   
+	   System.out.println("\n");
+	   System.out.println("With an ALLOW_ALL_SCHEME");
+	   
+	   message = "http://";
+	   if (url_scheme.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("With an ALLOW_ALL_SCHEME");
+	   message = "3ht://";
+	   if (url_scheme.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("With an ALLOW_ALL_SCHEME");
+	   message = "3ht://";
+	   if (url_scheme.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("With an ALLOW_ALL_SCHEME");
+	   message = "http://google.com";
+	   if (url_scheme.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("With an ALLOW_ALL_SCHEME");
+	   message = "http://youtube.com";
+	   if (url_scheme.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("With an ALLOW_ALL_SCHEME");
+	   message = "http://0.0.0.0";
+	   if (url_scheme.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("With an ALLOW_ALL_SCHEME");
+	   message = "http://aaa.";
+	   if (url_scheme.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("With an ALLOW_ALL_SCHEME");
+	   message = "http://1.2.3.4.5";
+	   if (url_scheme.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("With an ALLOW_ALL_SCHEME");
+	   message = "http://.aaa";
+	   if (url_scheme.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("With an ALLOW_ALL_SCHEME");
+	   message = "http://go.a";
+	   if (url_scheme.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+//*******************************************************************************
+//   With certain schemes passed such as http and  https 
+//*******************************************************************************
+	   System.out.println("\n");
+	   System.out.println("With certain schemes passed such as http and https");
+	   String [] schemes = {"http", "https"};
+	   UrlValidator url_s = new UrlValidator(schemes);
+	  
+	   message = "http://";
+	   if (url_s.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("With certain schemes passed such as http and https");
+	   message = "https://";
+	   if (url_s.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("With certain schemes passed such as http and https");
+	   message = "ftp://";
+	   if (url_s.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("With certain schemes passed such as http and https");
+	   message = "3ht://";
+	   if (url_s.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("With certain schemes passed such as http and https");
+	   message = "http://";
+	   if (url_s.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+//*******************************************************************************
+//   With an ALLOW_ALL_SCHEME	 
+//*******************************************************************************
+	   System.out.println("\n");
+	   System.out.println("With an ALLOW_ALL_SCHEME");
+	   System.out.println("Adding port 80 to the url with ALLOW_ALL_SCHEME");
+	   message = "http://google.com:80";
+	   if (url_scheme.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("Adding port -1 to the url with ALLOW_ALL_SCHEME");
+	   message = "http://google.com:-1";
+	   if (url_scheme.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("Adding port 65535 to the url with ALLOW_ALL_SCHEME");
+	   message = "http://google.com:65535";
+	   if (url_scheme.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	
+	   System.out.println("\n");
+	   System.out.println("Adding port 0 to the url with ALLOW_ALL_SCHEME");
+	   message = "http://google.com:0";
+	   if (url_scheme.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("Adding port 65536 to the url with ALLOW_ALL_SCHEME");
+	   message = "http://google.com:65536";
+	   if (url_scheme.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("Adding path /test1 to the url with ALLOW_ALL_SCHEME");
+	   message = "http://google.com/test1";
+	   if (url_scheme.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("Adding path /t123 to the url with ALLOW_ALL_SCHEME");
+	   message = "http://google.com/t123";
+	   if (url_scheme.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("Adding path /$23 to the url with ALLOW_ALL_SCHEME");
+	   message = "http://google.com/$23";
+	   if (url_scheme.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   
+	   System.out.println("\n");
+	   System.out.println("Adding path /$# to the url with ALLOW_ALL_SCHEME"); 
+	   message = "http://google.com/$#";
+	   if (url_scheme.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("Adding path /$#/file to the url with ALLOW_ALL_SCHEME");
+	   message = "http://google.com/$#/file";
+	   if (url_scheme.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("Adding path /$#//file to the url with ALLOW_ALL_SCHEME");
+	   message = "http://google.com/$#//file";
+	   if (url_scheme.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("Adding path /$23/file to the url with ALLOW_ALL_SCHEME");
+	   message = "http://google.com/$23/file";
+	   if (url_scheme.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("Adding path /../ to the url with ALLOW_ALL_SCHEME");
+	   message = "http://google.com/../";
+	   if (url_scheme.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("Adding path /.. to the url with ALLOW_ALL_SCHEME");
+	   message = "http://google.com/..";
+	   if (url_scheme.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("Adding path /test1/file to the url with ALLOW_ALL_SCHEME");
+	   message = "http://google.com/test1/file";
+	   if (url_scheme.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("Adding path /test1//file to the url with ALLOW_ALL_SCHEME");
+	   message = "http://google.com/test1//file";
+	   if (url_scheme.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("Adding path /test1/ to the url with ALLOW_ALL_SCHEME");
+	   message = "http://google.com/test1/";
+	   if (url_scheme.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("Adding path /t123/file to the url with ALLOW_ALL_SCHEME");
+	   message = "http://google.com/t123/file";
+	   if (url_scheme.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("Adding query ?action=view to the url with ALLOW_ALL_SCHEME");
+	   message = "http://google.com?action=view";
+	   if (url_scheme.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("Adding query ?action=edit&mode=up to the url with ALLOW_ALL_SCHEME");
+	   message = "http://google.com?action=edit&mode=up";
+	   if (url_scheme.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("Adding query ?name=ferret to the url with ALLOW_ALL_SCHEME");
+	   message = "http://google.com?name=ferret";
+	   if (url_scheme.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("Adding query ?name=ferret&color=purple to the url with ALLOW_ALL_SCHEME");
+	   message = "http://google.com?name=ferret&color=purple";
+	   if (url_scheme.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }
+	   
+	   System.out.println("\n");
+	   System.out.println("Adding query ?# to the url with ALLOW_ALL_SCHEME");
+	   message = "http://google.com?#";
+	   if (url_scheme.isValid(message)) {
+		    System.out.println(message);
+		   	System.out.println("Url is valid");
+	   }else {
+		   System.out.println(message);
+		   System.out.println("Url is not valid");
+	   }	   
 	   
    }
    
